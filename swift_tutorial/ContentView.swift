@@ -1,61 +1,69 @@
-//
-//  ContentView.swift
-//  swift_tutorial
-//
-//  Created by 이승호 on 12/31/25.
-//
-
 import SwiftUI
-import SwiftData
+import Supabase
+import GoogleSignInSwift
+import GoogleSignIn
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    let supabase = SupabaseClient(supabaseURL: URL(string: "https://ciszaukmnglepvqpulya.supabase.co")!,
+                                  supabaseKey: "sb_publishable_s_BMgLmH4w_8boe7SWq59Q_p9fLDEU-")
+    
+    @State var selectedTab = 0
+    
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
+        if let user = supabase.auth.currentSession?.user {
+            TabView {
+                Tab("홈", systemImage: "house.fill") {
+                    TodoListView()
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+                Tab("어몽어스", systemImage: "person.fill") {
+                    AmongUsWalkingView()
                 }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+                Tab("포트폴리오", systemImage: "list.clipboard.fill") {
+                    PortfolioView()
+                }
+                Tab("채팅", systemImage: "message.fill") {
+                    ChatView()
                 }
             }
-        } detail: {
-            Text("Select an item")
+        } else {
+            GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(), action: {
+                Task {
+                    await googleSignIn()
+                }
+            })
         }
+        
     }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+    
+    
+    func googleSignIn() async {
+        do {
+            let result = try await GIDSignIn.sharedInstance.signIn(withPresenting: getRootViewController())
+            
+            guard let idToken = result.user.idToken?.tokenString else {
+                throw NSError(domain: "Google", code: -1, userInfo: [NSLocalizedDescriptionKey: "ID Token 없음"])
             }
+            
+            // Supabase에 idToken 전달
+            let session = try await supabase.auth.signInWithIdToken(
+                credentials: .init(
+                    provider: .google,
+                    idToken: idToken
+                )
+            )
+            
+            print("로그인 성공: \(session.user.id)")
+        } catch {
+            
         }
     }
-}
-
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+    
+    // presenting VC 가저오기
+    func getRootViewController() -> UIViewController {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let rootVC = windowScene.windows.first?.rootViewController else {
+            fatalError("Root View Controller 를 찾을 수 없음")
+        }
+        return rootVC
+    }
 }

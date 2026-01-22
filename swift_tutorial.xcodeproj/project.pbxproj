@@ -6,6 +6,23 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3D2BEA3D2F1FA1AA008A6F38 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 3D2BEA3C2F1FA1AA008A6F38 /* SocketIO */; };
+		3D2BEA762F21D070008A6F38 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3D2BEA752F21D070008A6F38 /* Config.xcconfig */; };
+		3D2C11722F0788BE005DCB6A /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 3D2C11712F0788BE005DCB6A /* CropViewController */; };
+		3D2C11742F0788BE005DCB6A /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 3D2C11732F0788BE005DCB6A /* TOCropViewController */; };
+		3D2C11A82F0795D0005DCB6A /* ClothingImageClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3D2C11A72F0795D0005DCB6A /* ClothingImageClassifier.mlmodel */; };
+		3D2C12002F088577005DCB6A /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 3D2C11FF2F088577005DCB6A /* Auth */; };
+		3D2C12022F088577005DCB6A /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = 3D2C12012F088577005DCB6A /* Functions */; };
+		3D2C12042F088577005DCB6A /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 3D2C12032F088577005DCB6A /* PostgREST */; };
+		3D2C12062F088577005DCB6A /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 3D2C12052F088577005DCB6A /* Realtime */; };
+		3D2C12082F088577005DCB6A /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 3D2C12072F088577005DCB6A /* Storage */; };
+		3D2C12292F0886B6005DCB6A /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 3D2C12282F0886B6005DCB6A /* Supabase */; };
+		3D2C12312F0D2541005DCB6A /* bible.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D2C12302F0D2541005DCB6A /* bible.json */; };
+		3D6D17302F181C8B008B1CB8 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 3D6D172F2F181C8B008B1CB8 /* GoogleSignIn */; };
+		3D6D17322F181C8B008B1CB8 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3D6D17312F181C8B008B1CB8 /* GoogleSignInSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		3D2C11422F043085005DCB6A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,9 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D2BEA752F21D070008A6F38 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		3D2C112F2F043084005DCB6A /* swift_tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swift_tutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D2C11412F043085005DCB6A /* swift_tutorialTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swift_tutorialTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D2C114B2F043086005DCB6A /* swift_tutorialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swift_tutorialUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D2C11A72F0795D0005DCB6A /* ClothingImageClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ClothingImageClassifier.mlmodel; sourceTree = "<group>"; };
+		3D2C12302F0D2541005DCB6A /* bible.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bible.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +72,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D2C11742F0788BE005DCB6A /* TOCropViewController in Frameworks */,
+				3D2C11722F0788BE005DCB6A /* CropViewController in Frameworks */,
+				3D2C12082F088577005DCB6A /* Storage in Frameworks */,
+				3D2C12022F088577005DCB6A /* Functions in Frameworks */,
+				3D2C12292F0886B6005DCB6A /* Supabase in Frameworks */,
+				3D2BEA3D2F1FA1AA008A6F38 /* SocketIO in Frameworks */,
+				3D6D17322F181C8B008B1CB8 /* GoogleSignInSwift in Frameworks */,
+				3D2C12062F088577005DCB6A /* Realtime in Frameworks */,
+				3D2C12002F088577005DCB6A /* Auth in Frameworks */,
+				3D2C12042F088577005DCB6A /* PostgREST in Frameworks */,
+				3D6D17302F181C8B008B1CB8 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,10 +106,13 @@
 		3D2C11262F043084005DCB6A = {
 			isa = PBXGroup;
 			children = (
+				3D2BEA752F21D070008A6F38 /* Config.xcconfig */,
 				3D2C11312F043084005DCB6A /* swift_tutorial */,
 				3D2C11442F043085005DCB6A /* swift_tutorialTests */,
 				3D2C114E2F043086005DCB6A /* swift_tutorialUITests */,
 				3D2C11302F043084005DCB6A /* Products */,
+				3D2C11A72F0795D0005DCB6A /* ClothingImageClassifier.mlmodel */,
+				3D2C12302F0D2541005DCB6A /* bible.json */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +146,17 @@
 			);
 			name = swift_tutorial;
 			packageProductDependencies = (
+				3D2C11712F0788BE005DCB6A /* CropViewController */,
+				3D2C11732F0788BE005DCB6A /* TOCropViewController */,
+				3D2C11FF2F088577005DCB6A /* Auth */,
+				3D2C12012F088577005DCB6A /* Functions */,
+				3D2C12032F088577005DCB6A /* PostgREST */,
+				3D2C12052F088577005DCB6A /* Realtime */,
+				3D2C12072F088577005DCB6A /* Storage */,
+				3D2C12282F0886B6005DCB6A /* Supabase */,
+				3D6D172F2F181C8B008B1CB8 /* GoogleSignIn */,
+				3D6D17312F181C8B008B1CB8 /* GoogleSignInSwift */,
+				3D2BEA3C2F1FA1AA008A6F38 /* SocketIO */,
 			);
 			productName = swift_tutorial;
 			productReference = 3D2C112F2F043084005DCB6A /* swift_tutorial.app */;
@@ -195,6 +240,12 @@
 			);
 			mainGroup = 3D2C11262F043084005DCB6A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				3D2C11702F0788BE005DCB6A /* XCRemoteSwiftPackageReference "TOCropViewController" */,
+				3D2C11FE2F088577005DCB6A /* XCRemoteSwiftPackageReference "supabase-swift" */,
+				3D6D172E2F181C8B008B1CB8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				3D2BEA3B2F1FA1AA008A6F38 /* XCRemoteSwiftPackageReference "socket" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3D2C11302F043084005DCB6A /* Products */;
 			projectDirPath = "";
@@ -212,6 +263,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D2BEA762F21D070008A6F38 /* Config.xcconfig in Resources */,
+				3D2C12312F0D2541005DCB6A /* bible.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D2C11A82F0795D0005DCB6A /* ClothingImageClassifier.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +325,7 @@
 /* Begin XCBuildConfiguration section */
 		3D2C11532F043086005DCB6A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D2BEA752F21D070008A6F38 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -399,6 +454,8 @@
 				DEVELOPMENT_TEAM = 23ULXV7A5W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "swift-tutorial-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +485,8 @@
 				DEVELOPMENT_TEAM = 23ULXV7A5W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "swift-tutorial-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -558,6 +617,99 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3D2BEA3B2F1FA1AA008A6F38 /* XCRemoteSwiftPackageReference "socket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		3D2C11702F0788BE005DCB6A /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TimOliver/TOCropViewController";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.1;
+			};
+		};
+		3D2C11FE2F088577005DCB6A /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+		3D6D172E2F181C8B008B1CB8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3D2BEA3C2F1FA1AA008A6F38 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D2BEA3B2F1FA1AA008A6F38 /* XCRemoteSwiftPackageReference "socket" */;
+			productName = SocketIO;
+		};
+		3D2C11712F0788BE005DCB6A /* CropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D2C11702F0788BE005DCB6A /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = CropViewController;
+		};
+		3D2C11732F0788BE005DCB6A /* TOCropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D2C11702F0788BE005DCB6A /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = TOCropViewController;
+		};
+		3D2C11FF2F088577005DCB6A /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D2C11FE2F088577005DCB6A /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		3D2C12012F088577005DCB6A /* Functions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D2C11FE2F088577005DCB6A /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Functions;
+		};
+		3D2C12032F088577005DCB6A /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D2C11FE2F088577005DCB6A /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		3D2C12052F088577005DCB6A /* Realtime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D2C11FE2F088577005DCB6A /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Realtime;
+		};
+		3D2C12072F088577005DCB6A /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D2C11FE2F088577005DCB6A /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+		3D2C12282F0886B6005DCB6A /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D2C11FE2F088577005DCB6A /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+		3D6D172F2F181C8B008B1CB8 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D6D172E2F181C8B008B1CB8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		3D6D17312F181C8B008B1CB8 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D6D172E2F181C8B008B1CB8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3D2C11272F043084005DCB6A /* Project object */;
 }
