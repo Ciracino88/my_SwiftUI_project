@@ -53,7 +53,8 @@ io.on('connection', (socket) => {
     .insert({
       content,
       username,
-      room_id
+      room_id: "public",
+      user_id: socket.user_id || null
     })
     .select();
 
