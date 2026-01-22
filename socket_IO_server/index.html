@@ -6,6 +6,62 @@
     <title>index</title>
 </head>
 <body>
-    <h3>My Journal</h3>
+    <h3>Ciracino88's Server🍀</h3>
+    <hr>
+    <div id="messages"></div>
+
+    <form id="form">
+        <input id="input" autocomplete="off" placeholder="글을 남겨보세용">
+        <button>등록</button>
+    </form>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script>
+        const socket = io();
+        
+        const messages = document.getElementById("messages");
+        const form = document.getElementById("form");
+        const input = document.getElementById("input");
+
+        // 과거 메시지 내역 로드
+        async function loadMessages() {
+            try {
+                // 서버에 제공할 엔드포인트
+                const res = await fetch("/past-message");
+                const data = await res.json();
+                data.forEach(msg => addMessage(msg.content, msg.username || '익명'));
+            } catch (e) {
+                console.log("메시지 로드 실패", e);
+            }
+        }
+
+        function addMessage(content, username = "익명") {
+            const item = document.createElement("div");
+
+            item.className = 'messages_item';
+            item.textContent = `${username}: ${content}`;
+            messages.append(item);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (input.value) {
+                // 유저 네임 임의로 부여 (user)
+                const msg = { content: input.value, username: "user" };
+                socket.emit('chat', msg);
+                addMessage(input.value, 'ciracino88');
+                input.value = '';
+            }
+        });
+
+        socket.on('chat', (msg) => {
+            addMessage(msg.content, msg.username || '익명');
+        });
+
+        socket.on('connect', () => {
+            loadMessages();
+        });
+    </script>
 </body>
 </html>

@@ -14,7 +14,7 @@ class ChatSocketManager: ObservableObject {
     private init() {
         // 서버 URL (배포 시 wss://domain.com 형식으로 변경.
         // 로컬은 localhost:3000
-        let url = URL(string: "")!
+        let url = URL(string: "https://my-swiftui-project-backand.onrender.com/")!
         
         manager = SocketManager(socketURL: url, config: [
             .log(true),
