@@ -1,3 +1,6 @@
+// path 라이브러리 사용
+const path = require('path');
+
 // node.js 에서 앱을 만들 때 쓰는 라이브러리
 const express = require('express');
 
@@ -76,8 +79,10 @@ server.listen(PORT, () => {
   console.log(`Socket.IO 서버 실행 중`);
 });
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/', (req, res) => {
-    res.send("socket.IO + supabase 서버 정상 동작 중")
+    res.sendFile(path.join(__dirname, 'public', 'index.html'))
 });
 
 // 메시지 로드 엔드포인트
