@@ -32,5 +32,9 @@
 	</dict>
 	<key>NSUserNotificationsUsageDescription</key>
 	<string>"알림 설정을 위한 권한이 필요합니다."</string>
+	<key>SUPABASE_KEY</key>
+	<string>$(SUPABASE_KEY)</string>
+	<key>SUPABASE_URL</key>
+	<string>$(SUPABASE_URL)</string>
 </dict>
 </plist>

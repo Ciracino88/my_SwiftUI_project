@@ -3,9 +3,29 @@ import Supabase
 import GoogleSignInSwift
 import GoogleSignIn
 
+struct Config {
+    static let supabaseURL: URL = {
+        guard let urlString = Bundle.main.object(forInfoDictionaryKey: "SUPABASE_URL") as? String,
+           let url = URL(string: "https://" + urlString) else {
+            fatalError("SUPABASE_URL not found in Info.plist")
+        }
+        print("supabase url: \(urlString)")
+        return url
+    }()
+    
+    static let supabaseKEY: String = {
+        guard let supabase_key = Bundle.main.object(forInfoDictionaryKey: "SUPABASE_KEY") as? String,
+              !supabase_key.isEmpty else {
+            fatalError("SUPABASE_KEY not found in Info.plist")
+        }
+        print("supabase key: \(supabase_key)")
+        return supabase_key
+    }()
+}
+
 struct ContentView: View {
-    let supabase = SupabaseClient(supabaseURL: URL(string: "https://ciszaukmnglepvqpulya.supabase.co")!,
-                                  supabaseKey: "sb_publishable_s_BMgLmH4w_8boe7SWq59Q_p9fLDEU-")
+    let supabase = SupabaseClient(supabaseURL: Config.supabaseURL,
+                                  supabaseKey: Config.supabaseKEY)
     
     @State var selectedTab = 0
     

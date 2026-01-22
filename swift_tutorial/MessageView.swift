@@ -14,7 +14,7 @@ class ChatSocketManager: ObservableObject {
     private init() {
         // 서버 URL (배포 시 wss://domain.com 형식으로 변경.
         // 로컬은 localhost:3000
-        let url = URL(string: "http://192.168.219.114:3000")!
+        let url = URL(string: "")!
         
         manager = SocketManager(socketURL: url, config: [
             .log(true),

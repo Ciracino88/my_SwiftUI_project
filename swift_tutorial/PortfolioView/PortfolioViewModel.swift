@@ -10,8 +10,8 @@ class PortfolioViewModel: ObservableObject {
     @Published var createdContent = ""
     @Published var createdParentId: UUID? = nil
     
-    let supabase = SupabaseClient(supabaseURL: URL(string: "https://ciszaukmnglepvqpulya.supabase.co")!,
-                                  supabaseKey: "sb_publishable_s_BMgLmH4w_8boe7SWq59Q_p9fLDEU-")
+    let supabase = SupabaseClient(supabaseURL: Config.supabaseURL,
+                                  supabaseKey: Config.supabaseKEY)
     
     func fetchPortfolios() async {
         do {
