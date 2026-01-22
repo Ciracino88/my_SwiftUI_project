@@ -90,7 +90,7 @@ app.get('/', (req, res) => {
 app.get('/past-message', async (req, res) => {
   try {
     const { data, error } = await supabase
-    .from('messages')
+    .from('message')
     .select('content, username, created_at')
     .order('create_at', { ascending: true })
     .limit(50) // 50개까지만 로드
