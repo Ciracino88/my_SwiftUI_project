@@ -38,7 +38,7 @@
                 const { data: { session }, error: sessionError } = await supabase.auth.getSession();
 
                 if (session) {
-                    showLoginMessage(`${session.user.id.slice}`);
+                    showLoginMessage(`${session.user.id}`);
                     await loadMessages();
                     return;
                 }
@@ -73,6 +73,7 @@
                 const res = await fetch("/past-message");
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
+                await showLoginMessage(`${data.length}개의 메시지 로드`);
                 data.forEach(msg => addMessage(msg.content, msg.username || '익명', false));
             } catch (e) {
                 console.log("메시지 로드 실패", e);
