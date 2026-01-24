@@ -45,7 +45,7 @@ io.on('connection', (socket) => {
   socket.on('chat', async (message) => {
     // content, username, room_id 를 이용해 message 객체 생성
     // room_id 는 'public' 으로 설정
-    const { content, username, room_id = 'public' } = message;
+    const { content, username, room_id = 'public', currentUserID } = message;
 
     // 1. supabase 에 메시지 저장
     const { data, error } = await supabase
