@@ -35,6 +35,11 @@
             const { data: { session }, error: sessionError } = await supabase.auth.getSession();
             if (session) {
                 console.log("이미 로그인 중입니다: ", session.user.id);
+                const log = document.createElement("p");
+                log.textContent = `${data.user.id}님이 로그인하였습니다.`;
+                messages.appendChild(log);
+
+                loadMessages();
                 return;
             }
 
