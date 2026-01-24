@@ -88,6 +88,7 @@ app.get('/', (req, res) => {
 
 // 메시지 로드 엔드포인트
 app.get('/past-message', async (req, res) => {
+  console.log("메시지 로드");
   try {
     const { data, error } = await supabase
     .from('message')
@@ -99,6 +100,7 @@ app.get('/past-message', async (req, res) => {
   
   res.json(data || []);
   } catch (err) {
+    console.log("메시지 로드 실패: ", err);
     res.status(500).json({ error: "서버 오류" });
   }
 });

@@ -16,6 +16,14 @@
     </form>
 
     <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script type="module">
+        import { createClient } from "https://esm.sh/@supabase/supabase-js@2"
+
+        const supabase = createClient(
+            'https://ciszaukmnglepvqpulya.supabase.co',
+            "sb_publishable_s_BMgLmH4w_8boe7SWq59Q_p9fLDEU-"
+        )
+    </script>
     <script>
         const socket = io();
         
@@ -23,24 +31,42 @@
         const form = document.getElementById("form");
         const input = document.getElementById("input");
 
+        // 익명 로그인 시도
+        async function signInAnonymously() {
+            const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+            if (session) {
+                console.log("이미 로그인 중입니다: ", session.user.id);
+                return;
+            }
+
+            const { data, error } = await supabase.auth.signInAnonymously();
+            if (error) {
+                console.log("익명 로그인 실패: ", error.message);
+                return;
+            }
+
+            console.log("익명 로그인 성공: ", data.user.id);
+        }
+
         // 과거 메시지 내역 로드
         async function loadMessages() {
             try {
                 // 서버에 제공할 엔드포인트
                 const res = await fetch("/past-message");
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
-                data.forEach(msg => addMessage(msg.content, msg.username || '익명'));
+                data.forEach(msg => addMessage(msg.content, msg.username || '익명', false));
             } catch (e) {
                 console.log("메시지 로드 실패", e);
             }
         }
 
-        function addMessage(content, username = "익명") {
+        function addMessage(content, username = "익명", isSent = false) {
             const item = document.createElement("div");
 
-            item.className = 'messages_item';
-            item.textContent = `${username}: ${content}`;
-            messages.append(item);
+            item.className = `message ${isSent ? "sent" : "received"}`;
+            item.innerHTML = `<strong>${username}</strong>: ${content}`;
+            messages.appendChild(item);
             messages.scrollTop = messages.scrollHeight;
         }
 
@@ -50,16 +76,17 @@
                 // 유저 네임 임의로 부여 (user)
                 const msg = { content: input.value, username: "user" };
                 socket.emit('chat', msg);
-                addMessage(input.value, 'ciracino88');
+                addMessage(msg.content, msg.username, true);
                 input.value = '';
             }
         });
 
         socket.on('chat', (msg) => {
-            addMessage(msg.content, msg.username || '익명');
+            addMessage(msg.content, msg.username || '익명', false);
         });
 
         socket.on('connect', () => {
+            console.log("socket connected");
             loadMessages();
         });
     </script>
