@@ -54,7 +54,7 @@ io.on('connection', (socket) => {
       content,
       username,
       room_id: "public",
-      user_id: socket.user_id || null
+      user_id: currentUserID
     })
     .select();
 

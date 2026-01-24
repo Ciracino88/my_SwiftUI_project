@@ -32,6 +32,8 @@
         const form = document.getElementById("form");
         const input = document.getElementById("input");
 
+        const currentUserID = null;
+
         async function signInAnonymously() {
             try {
                 // 현재 세션 확인 : 이미 로그인 중인가?
@@ -39,6 +41,7 @@
 
                 if (session) {
                     showLoginMessage(`${session.user.id}`);
+                    currentUserID = session.user.id;
                     await loadMessages();
                     return;
                 }
@@ -52,6 +55,7 @@
 
                 // 로그인 성공 시, 메시지 표시
                 showLoginMessage(`${session.user.id}`);
+                currentUserID = session.user.id;
                 await loadMessages();
             } catch (err) {
                 showLoginMessage("로그인 처리 중 오류 발생")
@@ -93,7 +97,7 @@
             e.preventDefault();
             if (input.value) {
                 // 유저 네임 임의로 부여 (user)
-                const msg = { content: input.value, username: "user" };
+                const msg = { content: input.value, username: "user", currentUserID: currentUserID };
                 socket.emit('chat', msg);
                 addMessage(msg.content, msg.username, true);
                 input.value = '';
